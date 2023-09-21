@@ -1,0 +1,38 @@
+server:
+  port: 8092
+spring:
+  application:
+    name: spring-boot-mq-rabbit-concurrency
+  rabbitmq:
+    host: ${REMOTE_URL:127.0.0.1}
+    port: 5672
+    username: guest
+    password: guest
+    # 配置虚拟主机
+    virtual-host: /
+    # 配置连接超时时间
+    connection-timeout: 0
+
+    # 配置Producer
+    #开启发布者确认确认机制，snone为不启用，correlated是发布消息成功到交换器后会触发回调方法
+    publisher-confirm-type: correlated
+    #消息从交换机抵达队列确认，当消息没有路由从交换机到队列时，会进行回调
+    publisher-returns: true
+    #设置为 true 后 消费者在消息没有被路由到合适队列情况下会被return监听，而不会自动删除
+    template:
+      mandatory: true
+
+    # 配置Consumer
+    #设置消费端手动 ack
+    listener:
+      simple:
+        #设置消费端手动 ack
+        acknowledge-mode: manual
+        #消费者最小数量
+        concurrency: 1
+        #消费之最大数量
+        max-concurrency: 10
+        #在单个请求中处理的消息个数，他应该大于等于事务数量(unack的最大数量)
+        prefetch: 2
+
+

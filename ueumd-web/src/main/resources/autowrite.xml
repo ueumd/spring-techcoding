@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring 来创建对象 在Spring中这些都称为Bean
+
+        所谓的IOC 就是对象由spring创建管理
+
+        User user = new User();
+
+        id = 变量名
+    -->
+
+
+
+    <bean id="cat" class="org.example.bean.pojo.Cat"/>
+    <bean id="dog" class="org.example.bean.pojo.Dog"/>
+
+    <!--
+    自动装配
+        byName：会自动在容器上下文中查找，和自己对象set方法后面的值对应的bean id！
+        byName -> cat
+        byName -> dog
+
+        autowire=“byName”
+        - 会自动在容器上下文中查找，和自己对象set方法后面的值对应的bean id！
+        - 弊端：set 方法后面的值和 id 相同
+
+        autowire=“byType”
+        - 会自动在容器上下文中查找，和自己对象属性类型相同的bean
+        - 弊端：它必须保证类型全局唯一（在IOC容器中只能由一个）
+
+         总结
+         - byName的时候，需要保证所有bean的id唯一，并且这个bean需要和自动注入的属性的set方法的值一致
+         - byType的时候，需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致
+    -->
+    <bean id="people" class="org.example.bean.pojo.People" autowire="byName">
+        <property name="name" value="Bean的自动装配"/>
+    </bean>
+
+    <bean id="peopleByType" class="org.example.bean.pojo.People" autowire="byType">
+        <property name="name" value="Bean的自动装配 byType"/>
+    </bean>
+
+</beans>

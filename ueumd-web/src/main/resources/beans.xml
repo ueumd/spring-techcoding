@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring 来创建对象 在Spring中这些都称为Bean
+
+        所谓的IOC 就是对象由spring创建管理
+
+        User user = new User();
+
+        id = 变量名
+    -->
+
+
+    <bean id="user" class="org.example.bean.pojo.User" name="u2,u3;u4">
+      <!--  <constructor-arg type="java.lang.String" value="csdn_闲言"/>-->
+        <constructor-arg name="name" value="有参构造函数"/>
+       <!-- <property name="name" value="Bean学习"/>-->
+    </bean>
+
+    <bean id="singleUser" class="org.example.bean.pojo.User"  scope="singleton">
+         <property name="name" value="singleton"/>
+    </bean>
+
+    <bean id="prototypeUser" class="org.example.bean.pojo.User"  scope="prototype">
+        <property name="name" value="prototype"/>
+    </bean>
+
+
+    <!--模仿之前的IOC-->
+    <bean id="mysqlImpl" class="org.example.ioc.dao.UserDaoMysqlImpl"></bean>
+    <bean id="oracleImpl" class="org.example.ioc.dao.UserDaoOracelImpl"></bean>
+
+    <bean id="UserServiceImpl" class="org.example.ioc.service.UserServiceImpl">
+        <property name="userDao" ref="oracleImpl"></property>
+       <!-- <property name="userDao" ref="mysqlImpl"></property>-->
+    </bean>
+
+</beans>

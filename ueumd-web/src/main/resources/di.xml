@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring 来创建对象 在Spring中这些都称为Bean
+
+        所谓的IOC 就是对象由spring创建管理
+
+        User user = new User();
+
+        id = 变量名
+    -->
+
+    <!--依赖注入-->
+    <bean id="address" class="org.example.bean.pojo.Address">
+        <property name="address" value="csdn_闲言"/>
+    </bean>
+
+    <bean id="student" class="org.example.bean.pojo.Student">
+        <!--注入address 类型-->
+        <property name="address" ref="address"/>
+        <!--String 类型-->
+        <property name="name" value="csdn_闲言"/>
+        <!--String 类型-->
+        <property name="books">
+            <array>
+                <value>JavaSE</value>
+                <value>JavaWeb</value>
+                <value>Spring</value>
+                <value>SpringMVC</value>
+                <value>Mybatis</value>
+            </array>
+        </property>
+        <!--List-->
+        <property name="hobbies">
+            <list>
+                <value>唱</value>
+                <value>跳</value>
+                <value>rap</value>
+                <value>篮球</value>
+            </list>
+        </property>
+        <!--Map-->
+        <property name="card">
+            <map>
+                <entry key="闲言" value="csdn——闲言"></entry>
+                <entry key="闲言博客" value="csdn——闲言——博客"></entry>
+            </map>
+        </property>
+        <!--set-->
+        <property name="games">
+            <set>
+                <value>唱</value>
+                <value>跳</value>
+                <value>rap</value>
+                <value>篮球</value>
+            </set>
+        </property>
+        <!--String-->
+        <property name="wife" value="xxx"></property>
+        <!--Properties-->
+        <property name="info">
+            <props>
+                <prop key="p1">v1</prop>
+                <prop key="p2">v2</prop>
+                <prop key="p3">v3</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
