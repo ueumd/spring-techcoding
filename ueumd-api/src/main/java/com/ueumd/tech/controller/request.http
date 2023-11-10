@@ -1,0 +1,9 @@
+GET http://127.0.0.1:8092/api/common/getSystemDate
+Accept: application/json
+
+###
+### getSystemDate
+GET http://127.0.0.1:8092/api/common/getSystemDate
+
+### version
+GET http://127.0.0.1:8092/api/common/version
