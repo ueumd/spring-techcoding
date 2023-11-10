@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: 51134
-Build-Jdk: Oracle OpenJDK version 1.8.0_161
-Implementation-Version: 1.0
-Implementation-Vendor-Id: spring.ueumd.techcoding
-Main-Class: ${start-class}
-
